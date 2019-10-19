@@ -66,13 +66,15 @@ namespace Hackathon.Controllers
             using (var db = new MotiveOfficeDBContext())
             { 
                 db.Users.Load();
-                var user = db.Users.First(u => u.PhoneNumber == phone && u.PasswordHash == passwordHash);//u.Name
-                /*foreach (var u in db.Users)
-                    if (u.PhoneNumber == phone && u.PasswordHash == passwordHash)
-                    {
-                        user = u;
-                        break;
-                    }*/
+                DbUser user;
+                try
+                {
+                    user = db.Users.First(u => u.PhoneNumber == phone && u.PasswordHash == passwordHash);
+                }
+                catch
+                {
+                    return View("BadLogin");
+                }
                 HttpContext.Session.Set("name", Encoding.Default.GetBytes(user.Name));
                 HttpContext.Session.Set("id", Encoding.Default.GetBytes(user.Id.ToString()));
                 return View("logged", user);
