@@ -36,6 +36,9 @@ namespace Hackathon.Models
         public string Email { get; set; }
         public string Region { get; set; }
         //public Тариф ...
-
+        public override string ToString()
+        {
+            return Name + " " +  MiddleName + " " + SecondName;
+        }
     }
 }

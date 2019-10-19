@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,8 @@ namespace Hackathon.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
+        
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -45,6 +48,7 @@ namespace Hackathon.Controllers
             using (var db = new MotiveOfficeDBContext())
             {
                 var user = db.Users.First(u => u.PhoneNumber == phone && u.PasswordHash == passwordHash);
+                HttpContext.Session.Set("name", Encoding.Default.GetBytes(user.Name));
                 return View("logged", user);
             }
         }

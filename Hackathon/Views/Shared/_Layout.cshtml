@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var login = Context.Session.GetString("name");
+    var adres = login == null ? "Home/Login" : "";
+    var label = login ?? "Login";
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,11 +30,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                        </li>
+                        </li>*@
+                        
+                        @*<li class="nav-item" style="background: red;">
+                            <a class="nav-link text-dark"  href="@adres" id="name">@label</a>
+                        </li>*@
                     </ul>
                 </div>
+                <a class="nav-item nav-link text-dark" href="@adres" id="name">@label</a>
             </div>
         </nav>
     </header>
