@@ -47,6 +47,10 @@ namespace Hackathon.Controllers
         {
             return View();
         }
+        public IActionResult ReplenishmentCosts()
+        {
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Login(string phone, string passwordHash)
@@ -54,7 +58,7 @@ namespace Hackathon.Controllers
             using (var db = new MotiveOfficeDBContext())
             { 
                 db.Users.Load();
-                var user = db.Users.First(u => u.PhoneNumber == phone && u.PasswordHash == passwordHash);//u.Name
+                var user = db.Users.First(u => u.Name == phone && u.PasswordHash == passwordHash);//u.Name
                 /*foreach (var u in db.Users)
                     if (u.PhoneNumber == phone && u.PasswordHash == passwordHash)
                     {
