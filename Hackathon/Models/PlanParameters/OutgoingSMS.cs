@@ -12,7 +12,7 @@ namespace Hackathon.Models.PlanParameters
 
         OutgoingSMS(bool type, int value)
         {
-            CurrentType = type;
+            //CurrentType = type;
             Value = value;
         }
 

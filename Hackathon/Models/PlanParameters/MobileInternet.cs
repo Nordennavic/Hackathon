@@ -12,13 +12,13 @@ namespace Hackathon.Models.PlanParameters
         private int InternetPackage; //Ёмкость пакета в GB
         MobileInternet(int dataRate, int speedValue, double cost)
         {
-            Speed = (dataRate, speedValue);
+            //Speed = (dataRate, speedValue);
             Cost = cost;
         }
 
         MobileInternet(int dataRate, int speedValue, int cost, int package)
         {
-           Speed = (dataRate, speedValue);
+           //Speed = (dataRate, speedValue);
            Cost = cost;
            InternetPackage = package;
         }

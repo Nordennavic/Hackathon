@@ -7,12 +7,6 @@ namespace Hackathon.Models.PlanParameters
 {
     public class PhonePlan //Тариф
     {
-        OutgoingCall OnMotiv;
-        OutgoingCall OnRegionOtherOp;
-        OutgoingCall OnGTC;
-        OutgoingCall OnRF;
-        OutgoingCall OnInternational;
-
         PhonePlan()
         {
 

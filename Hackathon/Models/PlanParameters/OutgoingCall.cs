@@ -12,7 +12,7 @@ namespace Hackathon.Models.PlanParameters
 
         OutgoingCall(bool type, int value) 
         {
-            CurrentType = type; 
+            //CurrentType = type; 
             Value = value;
         }
 
