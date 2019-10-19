@@ -5,7 +5,7 @@
 }
 
     <div class="text-center">
-        <form onsubmit="return onRegistrationSubmit()" class="form-signin" action="Login" method="post">
+        <form onsubmit="return onRegistrationSubmit()" class="form-signin" action="Registration" method="post">
 
             <h1 class="h3 mb-3 font-weight-normal">Регистрация пользователя</h1>
 
@@ -17,14 +17,14 @@
             
             <input name="PhoneNumber" type="text" class="form-control phone" placeholder="Номер телефона" required="" autofocus="" />
 
-            <input name="ExtraPhoneNumber" type="text" class="form-control phone" placeholder="Дополнительный номер телефона" required="" autofocus="" />
+            <input name="ExtraPhoneNumber" type="text" class="form-control phone" placeholder="Дополнительный номер телефона" autofocus="" />
 
-            <input name="Email" type="email" class="form-control" placeholder="E-mail" required="" autofocus="">
+            <input name="Email" type="email" class="form-control" placeholder="E-mail" autofocus="">
 
-            <input name="Region" type="email" class="form-control" placeholder="Регион проживания" required="" autofocus="">
+            <input name="Region" class="form-control" placeholder="Регион проживания" required="" autofocus="">
 
-            <input name="PasswordHash" type="password" id="password" class="form-control" placeholder="Пароль" required="">
-            <input type="hidden" id="registerPassHash"/>
+            <input type="password" id="password" class="form-control" placeholder="Пароль" required="">
+            <input type="hidden" name="PasswordHash" id="registerPassHash"/>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
             <p class="mt-5 mb-3 text-muted">© Hackaton - 2019</p>

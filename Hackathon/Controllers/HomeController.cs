@@ -51,11 +51,13 @@ namespace Hackathon.Controllers
         [HttpPost]
         public IActionResult Registration(DbUser u)
         {
-            /*using (var db = new MotiveOfficeDBContext())
+            using (var db = new MotiveOfficeDBContext())
             {
-                var user = db.Users
-            }*/
-            return View(null);
+                db.Users.Add(u);
+                db.SaveChanges();
+            }
+
+            return View("Index");
         }
 
         [HttpPost]

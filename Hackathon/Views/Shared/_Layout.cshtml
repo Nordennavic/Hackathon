@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Http
 @{
     var login = Context.Session.GetString("name");
-    var adres = login == null ? "Home/Login" : "";
+    var address = login == null ? "/Home/Login" : "";
     var label = login ?? "Login";
 }
 <!DOCTYPE html>
@@ -35,13 +35,13 @@
                         </li>
                         @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Registration">Регистрация</a>
                         </li>
                     </ul>
                 </div>
-                <a class="nav-item nav-link text-dark" href="@adres" id="name">@label</a>
+                <a class="nav-item nav-link text-dark" href="@address" id="name">@label</a>
             </div>
         </nav>
     </header>
