@@ -12,15 +12,24 @@ namespace Hackathon.Models.PlanParameters
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        public int AbonentPay { get; set; }
+        public int PrimaryPay { get; set; }
+
         /// <summary>
         /// Название тарифа
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Исходящие звонки на номера МОТИВ
+        /// Исходящие звонки на номера МОТИВ | ₽/мин
         /// </summary>
-        public double OnMotiv { get; set; }
+        public double? OnMotiv { get; set; }
+
+        /// <summary>
+        /// Исходящие звонки на номера МОТИВ | Пакет
+        /// </summary>
+        public double? OnMotivFix { get; set; }
 
         /// <summary>
         /// Исходящие звонки на номера региона подключения других операторов
@@ -30,17 +39,13 @@ namespace Hackathon.Models.PlanParameters
         /// <summary>
         /// Исходящие звонки на номера региона подключения ГТС
         /// </summary>
-        public double OnGTC { get; set; }
+        public double? OnGTC { get; set; }
 
         /// <summary>
         /// Исходящие звонки на номера РФ
         /// </summary>
         public double OnRF { get; set; }
 
-        /// <summary>
-        /// Исходящие звонки международного соединения
-        /// </summary>
-        public double OnInternational { get; set; }
 
         /// <summary>
         /// Мобильный интернет
@@ -48,54 +53,52 @@ namespace Hackathon.Models.PlanParameters
         public double MobileInternet { get; set; }
 
         /// <summary>
-        /// Исходящие SMS-сообщения на номера РФ
+        /// Исходящие SMS-сообщения на номера РФ | ₽/мин
         /// </summary>
-        public double SmsOnRF { get; set; }
+        public double? SmsOnRF { get; set; }
 
         /// <summary>
-        /// Исходящие SMS-сообщения на номера международных операторов
+        /// Исходящие SMS-сообщения на номера РФ | Пакет
         /// </summary>
-        public double SmsOnInternational { get; set; }
+        public double? SmsOnRFFix { get; set; }
 
         /// <summary>
         /// Исходящие MMS-сообщения на номера РФ
         /// </summary>
         public double MmsOnRF { get; set; }
 
-        /// <summary>
-        /// Входящие в национальном роуминге
-        /// </summary>
-        public double IncomingNatRoaming { get; set; }
 
 
         /// <summary>
         /// Тариф
         /// </summary>
-        /// <param name="onMotiv">Исходящие звонки на номера МОТИВ</param>
+        /// <param name="onMotiv">Исходящие звонки на номера МОТИВ | ₽/мин | Поставь null если пакетный план другой</param>
+        /// <param name="onMotivFix">Исходящие звонки на номера МОТИВ | Пакет | Поставь null если пакетный план другой</param>
         /// <param name="onOtherOp">Исходящие звонки на номера региона подключения других операторов</param>
         /// <param name="onGTC">Исходящие звонки на номера региона подключения ГТС</param>
         /// <param name="onRF">Исходящие звонки на номера РФ</param>
         /// <param name="onInternational">Исходящие звонки международного соединения</param>
         /// <param name="mobileInternet">Мобильный интернет</param>
-        /// <param name="smsOnRF">Исходящие SMS-сообщения на номера РФ</param>
+        /// <param name="smsOnRF">Исходящие SMS-сообщения на номера РФ | ₽/мин | Поставь null если пакетный план другой</param>
+        /// <param name="smsOnRF">Исходящие SMS-сообщения на номера РФ | Пакет| Поставь null если пакетный план другой</param>
         /// <param name="smsOnInternational">Исходящие SMS-сообщения на номера международных операторов</param>
         /// <param name="mmsOnRF">Исходящие MMS-сообщения на номера РФ</param>
         /// <param name="incomingNatRoaming">Входящие в национальном роуминге </param>
-        public PhonePlan(string title, double onMotiv, double onOtherOp, double onGTC, double onRF, double onInternational,
-        double mobileInternet, double smsOnRF, double smsOnInternational, double mmsOnRF,
-        double incomingNatRoaming)
+        public PhonePlan(string title, double? onMotiv, double? onMotivFix, double onOtherOp, double? onGTC, double onRF,
+        double mobileInternet, double? smsOnRF, double? smsOnRFFix, double mmsOnRF, int abonentPay, int primaryPay)
         {
-            title = Title;
+            Title = title;
             OnMotiv = onMotiv;
+            OnMotivFix = onMotivFix;
             OnOtherOp = onOtherOp;
             OnGTC = onGTC;
             OnRF = onRF;
-            OnInternational = onInternational;
             MobileInternet = mobileInternet;
             SmsOnRF = smsOnRF;
-            SmsOnInternational = smsOnInternational;
+            SmsOnRFFix = smsOnRFFix;
             MmsOnRF = mmsOnRF;
-            IncomingNatRoaming = incomingNatRoaming;
+            AbonentPay = abonentPay;
+            PrimaryPay = primaryPay;
         }
 
     }
