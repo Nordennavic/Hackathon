@@ -63,6 +63,7 @@ namespace Hackathon.Controllers
         }
         public IActionResult ReplenishmentCosts()
         {
+            if (HttpContext.Session.Get("id") == null) return View(new List<Transaction>());
             using (var db = new MotiveOfficeDBContext())
             {
                 var user = db.Users.Find(getId());
@@ -73,6 +74,7 @@ namespace Hackathon.Controllers
 
         public IActionResult UserServices()
         {
+            if (HttpContext.Session.Get("id") == null) return View(Tuple.Create(new Service[0], new DbService[0]));
             using (var db = new MotiveOfficeDBContext())
             {
                 var user = db.Users.Find(getId());
