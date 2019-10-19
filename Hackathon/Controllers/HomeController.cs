@@ -78,7 +78,7 @@ namespace Hackathon.Controllers
                 var user = db.Users.Find(getId());
                 db.DbServices.Load();
                 db.Services.Load();
-                return View(Tuple.Create(db.Services.ToArray(), user.Services.ToArray()));
+                return View(Tuple.Create(db.Services.ToArray(), user.Services?.ToArray() ?? new DbService[0]));
             }
         }
 
