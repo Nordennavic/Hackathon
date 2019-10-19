@@ -169,5 +169,44 @@ namespace Hackathon.Controllers
             return plain;
         }
 
+        public IActionResult DropPassword()
+        {
+            return View();
+        }
+
+        public IActionResult Question(string forgottenPhone)
+        {
+            using (var db = new MotiveOfficeDBContext())
+            {
+                db.Users.Load();          
+                DbUser user;
+                try
+                {
+                    user = db.Users.First(u => u.PhoneNumber == forgottenPhone);
+                }
+                catch
+                {
+                    return View("BadLogin");
+                }
+                return View("QuestionDropPassword", user);
+            }
+        }
+
+        public IActionResult AskQuestion(string answ, string passwordHash, int id)
+        {
+            using (var db = new MotiveOfficeDBContext())
+            {
+                db.Users.Load();
+                var user = db.Users.Find(id);
+                if (user.SecretAnswer == answ)
+                {
+                    user.PasswordHash = passwordHash;
+                    db.SaveChanges();
+                    return View("index");
+                }
+
+                return View("BadLogin");
+            }
+        }
     }
 }

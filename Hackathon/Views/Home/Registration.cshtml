@@ -14,7 +14,7 @@
             <input name="MiddleName" type="text" class="form-control" placeholder="Отчество" required="" autofocus="">
 
             <input name="SecondName" type="text" class="form-control" placeholder="Фамилия" required="" autofocus="">
-            
+
             <input name="PhoneNumber" type="text" class="form-control phone" placeholder="Номер телефона" required="" autofocus="" />
 
             <input name="ExtraPhoneNumber" type="text" class="form-control phone" placeholder="Дополнительный номер телефона" autofocus="" />
@@ -23,8 +23,14 @@
 
             <input name="Region" class="form-control" placeholder="Регион проживания" required="" autofocus="">
 
+            <input name="SecretQuestion" class="form-control" placeholder="Секретный вопрос" required="" autofocus="">
+
+            <input class="form-control" placeholder="Ответ" required="" autofocus="" id="ans">
+
+            <input type="hidden" name="SecretAnswer" id="answer"/>
+
             <input type="password" id="password" class="form-control" placeholder="Пароль" required="">
-            <input type="hidden" name="PasswordHash" id="registerPassHash"/>
+            <input type="hidden" name="PasswordHash" id="registerPassHash" />
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
             <p class="mt-5 mb-3 text-muted">© Hackaton - 2019</p>

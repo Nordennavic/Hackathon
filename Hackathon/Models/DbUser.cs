@@ -12,11 +12,14 @@ namespace Hackathon.Models
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public float Balance { get; set; }
         public string Name { get; set; }
         public string MiddleName { get; set; }
         public string SecondName { get; set; }
         public string PasswordHash { get; set; }
         public DateTime BirthDate { get; set; }
+        public string SecretQuestion { get; set; }
+        public string SecretAnswer { get; set; }
         public double Age 
         { 
             get

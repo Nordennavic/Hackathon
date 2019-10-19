@@ -6,21 +6,22 @@
 }
 
 <div class="text-center">
-<form onsubmit="return onLoginSubmit()" class="form-signin" action="Login" method="post">
-    <img class="mb-4" src="/Resources/Img/Motiv_logo.png" alt="" width="72" height="72">
-    <p id="incorrectInput"></p>
-    <h1 class="h3 mb-3 font-weight-normal">Войдите в систему</h1>
+    <form onsubmit="return onLoginSubmit()" class="form-signin" action="Login" method="post">
+        <img class="mb-4" src="/Resources/Img/Motiv_logo.png" alt="" width="72" height="72">
+        <p id="incorrectInput"></p>
+        <h1 class="h3 mb-3 font-weight-normal">Войдите в систему</h1>
 
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="text" name="phone" id="phoneHolder" class="form-control" placeholder="Номер телефона" required="" autofocus="">
-   
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="passwordHolder" class="form-control" placeholder="Пароль" required="">
-    <input type="hidden" id="loginPassHash" name="passwordHash"/>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="text" name="phone" id="phoneHolder" class="form-control" placeholder="Номер телефона" required="" autofocus="">
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
-    <p class="mt-5 mb-3 text-muted">© Hackaton - 2019</p>
-</form>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="passwordHolder" class="form-control" placeholder="Пароль" required="">
+        <input type="hidden" id="loginPassHash" name="passwordHash" />
+
+        <a class="btn btn-lg" asp-controller="Home" asp-action="DropPassword">Сброс пароля</a>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+        <p class="mt-5 mb-3 text-muted">© Hackaton - 2019</p>
+    </form>
 </div>
 <script>
     $("#phoneHolder").mask("+7 (999) 999-99-99");
