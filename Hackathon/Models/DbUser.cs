@@ -25,35 +25,11 @@ namespace Hackathon.Models
                     return age;
             }
         }
-        private string phoneNumber;
-        public string PhoneNumber
-        {
-            get
-            {
-                return phoneNumber;
-            }
-            set
-            {
-                if (value.Length == 10 && int.TryParse(value, out int number))
-                {
-                    phoneNumber = "+7 (";
-                    string addition = "";
-                    for (var i = 0; i < 10; i++)
-                    {
-                        if (i < 3 || i > 3 && i < 6 || i > 6 && i < 8 || i > 8)
-                            addition = value[i].ToString();
-                        else if (i == 3)
-                            addition = ") ";
-                        else if (i == 6)
-                            addition = "-";
-                        else if (i == 8)
-                            addition = "-";
-
-                        phoneNumber += addition;
-                    }  
-                }
-            }
-        }
+        public string PhoneNumber { get; set; } //основной номер
+        public string ExtraPhoneNumber { get; set; } //дополнительный номер
+        public string Email { get; set; }
+        public string Region { get; set; }
+        //public Тариф ...
 
     }
 }
