@@ -10,52 +10,52 @@ namespace Hackathon.Models.PlanParameters
         /// <summary>
         /// Исходящие звонки на номера МОТИВ
         /// </summary>
-        private double OnMotiv;
+        private double OnMotiv { get; set; }
 
         /// <summary>
         /// Исходящие звонки на номера региона подключения других операторов
         /// </summary>
-        private double OnOtherOp;
+        private double OnOtherOp { get; set; }
 
         /// <summary>
         /// Исходящие звонки на номера региона подключения ГТС
         /// </summary>
-        private double OnGTC;
+        private double OnGTC { get; set; }
 
         /// <summary>
         /// Исходящие звонки на номера РФ
         /// </summary>
-        private double OnRF;
+        private double OnRF { get; set; }
 
         /// <summary>
         /// Исходящие звонки международного соединения
         /// </summary>
-        private double OnInternational;
+        private double OnInternational { get; set; }
 
         /// <summary>
         /// Мобильный интернет
         /// </summary>
-        private double MobileInternet;
+        private double MobileInternet { get; set; }
 
         /// <summary>
         /// Исходящие SMS-сообщения на номера РФ
         /// </summary>
-        private double SmsOnRF;
+        private double SmsOnRF { get; set; }
 
         /// <summary>
         /// Исходящие SMS-сообщения на номера международных операторов
         /// </summary>
-        private double SmsOnInternational;
+        private double SmsOnInternational { get; set; }
 
         /// <summary>
         /// Исходящие MMS-сообщения на номера РФ
         /// </summary>
-        private double MmsOnRF;
+        private double MmsOnRF { get; set; }
 
         /// <summary>
         /// Входящие в национальном роуминге
         /// </summary>
-        private double IncomingNatRoaming;
+        private double IncomingNatRoaming { get; set; }
 
 
         /// <summary>
