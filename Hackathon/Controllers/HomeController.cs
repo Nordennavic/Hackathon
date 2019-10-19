@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -64,7 +65,7 @@ namespace Hackathon.Controllers
         {
             using (var db = new MotiveOfficeDBContext())
             {
-                var user = db.Users.Find(int.Parse(HttpContext.Session.GetString("id")));
+                var user = db.Users.Find(getId());
                 db.Transactions.Load();
                 return View(user.Transactions);
             }
@@ -98,7 +99,7 @@ namespace Hackathon.Controllers
                     return View("BadLogin");
                 }
                 HttpContext.Session.Set("name", Encoding.Default.GetBytes(user.Name));
-                HttpContext.Session.Set("id", Encoding.Default.GetBytes(user.Id.ToString()));
+                setId(user.Id);
                 return View("logged", user);
             }
         }
@@ -114,11 +115,46 @@ namespace Hackathon.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        int getId()
+        {
+            var code = HttpContext.Session.Get("id");
+            var bytes = DecryptData(code);
+            return int.Parse(System.Text.Encoding.UTF8.GetString(bytes));
+        }
+
+        void setId(int id)
+        {
+            HttpContext.Session.Set("id", EncryptData(Encoding.Default.GetBytes(id.ToString())));
+        }
+
         public IActionResult Exit()
         {
             HttpContext.Session.Set("name", Encoding.Default.GetBytes(""));
             HttpContext.Session.Set("id", Encoding.Default.GetBytes(""));
             return View("Index");
         }
+
+        const string ContainerName = "MyContainer";
+        public static byte[] EncryptData(byte[] dataToEncrypt)
+        {
+            byte[] cipherbytes;
+            var cspParams = new CspParameters { KeyContainerName = ContainerName };
+            using (var rsa = new RSACryptoServiceProvider(2048, cspParams))
+            {
+                cipherbytes = rsa.Encrypt(dataToEncrypt, false);
+            }
+            return cipherbytes;
+        }
+        public static byte[] DecryptData(byte[] dataToDecrypt)
+        {
+            byte[] plain;
+            var cspParams = new CspParameters { KeyContainerName = ContainerName };
+            using (var rsa = new RSACryptoServiceProvider(2048, cspParams))
+            {
+                plain = rsa.Decrypt(dataToDecrypt, false);
+            }
+            return plain;
+        }
+
     }
 }
