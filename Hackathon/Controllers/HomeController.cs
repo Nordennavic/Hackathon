@@ -49,6 +49,16 @@ namespace Hackathon.Controllers
         }
 
         [HttpPost]
+        public IActionResult Registration(DbUser u)
+        {
+            /*using (var db = new MotiveOfficeDBContext())
+            {
+                var user = db.Users
+            }*/
+            return View(null);
+        }
+
+        [HttpPost]
         public IActionResult Login(string phone, string passwordHash)
         {
             using (var db = new MotiveOfficeDBContext())
