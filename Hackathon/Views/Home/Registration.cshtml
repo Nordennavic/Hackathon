@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "_Layout";
+}
+
+    <div class="text-center">
+        <form onsubmit="return onRegistrationSubmit()" class="form-signin" action="Login" method="post">
+
+            <h1 class="h3 mb-3 font-weight-normal">Регистрация пользователя</h1>
+
+            <input name="Name" type="text" class="form-control" placeholder="Имя" required="" autofocus="">
+
+            <input name="MiddleName" type="text" class="form-control" placeholder="Отчество" required="" autofocus="">
+
+            <input name="SecondName" type="text" class="form-control" placeholder="Фамилия" required="" autofocus="">
+            
+            <input name="PhoneNumber" type="text" class="form-control phone" placeholder="Номер телефона" required="" autofocus="" />
+
+            <input name="ExtraPhoneNumber" type="text" class="form-control phone" placeholder="Дополнительный номер телефона" required="" autofocus="" />
+
+            <input name="Email" type="email" class="form-control" placeholder="E-mail" required="" autofocus="">
+
+            <input name="Region" type="email" class="form-control" placeholder="Регион проживания" required="" autofocus="">
+
+            <input name="PasswordHash" type="password" id="password" class="form-control" placeholder="Пароль" required="">
+            <input type="hidden" id="registerPassHash"/>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+            <p class="mt-5 mb-3 text-muted">© Hackaton - 2019</p>
+        </form>
+    </div>
+    <script>
+        $(".phone").mask("+7 (999) 999-99-99");
+    </script>
+
