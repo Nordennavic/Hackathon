@@ -15,7 +15,6 @@ namespace Hackathon.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         
 
         public HomeController(ILogger<HomeController> logger)
@@ -70,7 +69,7 @@ namespace Hackathon.Controllers
             using (var db = new MotiveOfficeDBContext())
             { 
                 db.Users.Load();
-                var user = db.Users.First(u => u.Name == phone && u.PasswordHash == passwordHash);//u.Name
+                var user = db.Users.First(u => u.PhoneNumber == phone && u.PasswordHash == passwordHash);//u.Name
                 /*foreach (var u in db.Users)
                     if (u.PhoneNumber == phone && u.PasswordHash == passwordHash)
                     {
@@ -92,6 +91,13 @@ namespace Hackathon.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Exit()
+        {
+            HttpContext.Session.Set("name", Encoding.Default.GetBytes(""));
+            HttpContext.Session.Set("id", Encoding.Default.GetBytes(""));
+            return View("Index");
         }
     }
 }
