@@ -24,16 +24,6 @@ namespace Hackathon.Controllers
 
         public IActionResult Index()
         {
-
-            using (var db = new MotiveOfficeDBContext())
-            {
-                /*db.Users.Add(new DbUser() { Name = "111", PasswordHash = "1"});
-                db.SaveChanges();*/
-
-                /*var phonePlan = new PhonePlan("asdf", 0, 0, 2, 3, 5, 8, 9, 0, 1, 0);
-                db.PhonePlans.Add(phonePlan);*/
-               // db.SaveChanges();
-            }
             return View();
         }
 
@@ -99,7 +89,7 @@ namespace Hackathon.Controllers
         {
             HttpContext.Session.Set("name", Encoding.Default.GetBytes(""));
             HttpContext.Session.Set("id", Encoding.Default.GetBytes(""));
-            return View("Index");
+            return View("Login");
         }
     }
 }
