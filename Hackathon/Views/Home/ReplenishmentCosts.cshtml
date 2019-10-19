@@ -1,6 +1,40 @@
-﻿@{
+﻿@using System.Collections
+@using Hackathon.Models;
+@model IEnumerable<Transaction>
+@{
     ViewData["Title"] = "Расходы, пополнения и детализация";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<table class="table">
+    <thead>
+            <thread>
+                <tr>
+                    <th>
+                        Дата
+                    </th>
+                    <th>
+                        Описание
+                    </th>
+                    <th>
+                        Деньги
+                    </th>
+                </tr>
+            </thread>
+        @if (Model != null)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            </tr>
+        }
+    </thead>
+</table>
