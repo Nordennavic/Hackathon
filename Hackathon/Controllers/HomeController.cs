@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Hackathon.Models;
 using Hackathon.Models.PlanParameters;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hackathon.Controllers
@@ -20,6 +21,19 @@ namespace Hackathon.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            using (var db = new MotiveOfficeDBContext())
+            {
+                //db.Users.Load();
+                /*var tr = new Transaction(DateTime.Now, 20, "") {UserId = 1};
+
+                db.PhonePlans.Add(new PhonePlan("190", 0, null, 1.8, null, 1.8, 0, 1.8, null, 6, 190, 200)); 
+
+                var dbUser = db.Users.Find(1);
+                db.Transactions.Add(tr);
+                dbUser.Transactions.Add(tr);
+                db.SaveChanges();*/
+
+            }
         }
 
         public IActionResult Index()
@@ -48,7 +62,12 @@ namespace Hackathon.Controllers
         }
         public IActionResult ReplenishmentCosts()
         {
-            return View();
+            using (var db = new MotiveOfficeDBContext())
+            {
+                var user = db.Users.Find(int.Parse(HttpContext.Session.GetString("id")));
+                db.Transactions.Load();
+                return View(user.Transactions);
+            }
         }
 
         [HttpPost]

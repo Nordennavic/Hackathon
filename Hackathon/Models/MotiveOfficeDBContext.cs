@@ -26,6 +26,10 @@ namespace Hackathon.Models
             optionsBuilder.UseSqlServer(ConnectionString);
             base.OnConfiguring(optionsBuilder);
         }
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PhonePlan>();
+        }*/
     }
 
 
