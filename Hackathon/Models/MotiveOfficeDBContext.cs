@@ -15,7 +15,7 @@ namespace Hackathon.Models
 
         public DbSet<DbUser> Users { get; set; }
 
-        public DbSet<PhonePlan> PhonePlans { get; set; }
+        //public DbSet<PhonePlan> PhonePlans { get; set; }
 
         public const string ConnectionString =
             "Server=tcp:hackatonmotiv.database.windows.net,1433;Initial Catalog=DB_MOTIV;Persist Security Info=False;User ID=Hackaton;Password=Team2019;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";

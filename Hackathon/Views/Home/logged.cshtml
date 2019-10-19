@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hackathon.Models.DbUser>
+﻿@model Hackathon.Models.DbUser
 
 @{
     ViewData["Title"] = "logged";
@@ -40,13 +40,13 @@
                 @Html.DisplayNameFor(model => model.Region)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Plan)
+                @Html.DisplayNameFor(model => model.PlanCode)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@*@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -76,7 +76,7 @@
                 @Html.DisplayFor(modelItem => item.Region)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Plan.Id)
+                @Html.DisplayFor(modelItem => item.PlanCode)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -84,6 +84,6 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+}*@
     </tbody>
 </table>

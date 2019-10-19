@@ -38,8 +38,9 @@ namespace Hackathon.Models
         public string Region { get; set; }
         //public Тариф ...
         public int PlanCode { get; set; }
-        [ForeignKey("PlanCode")]
-        public PhonePlan Plan { get; set; }
+        //public string PlanName { get; set; }
+        //[ForeignKey("PlanCode")]
+        //public PhonePlan Plan { get; set; }
         public override string ToString()
         {
             return Name + " " +  MiddleName + " " + SecondName;
