@@ -5,23 +5,22 @@ using System.Threading.Tasks;
 
 namespace Hackathon.Models.PlanParameters
 {
-    private (DataRate, int) Speed;
-    private double Cost; // Стоимость за MB
-    private int InternetPackage; //Ёмкость пакета в GB
-
     public class MobileInternet
     {
+        private (DataRate, int) Speed;
+        private double Cost; // Стоимость за MB
+        private int InternetPackage; //Ёмкость пакета в GB
         MobileInternet(int dataRate, int speedValue, double cost)
         {
             Speed = (dataRate, speedValue);
             Cost = cost;
         }
 
-        MobileInternet(int dataRate, int speedValue, int Cost, int package)
+        MobileInternet(int dataRate, int speedValue, int cost, int package)
         {
            Speed = (dataRate, speedValue);
            Cost = cost;
-            InternetPackage = package;
+           InternetPackage = package;
         }
     }
     enum DataRate
