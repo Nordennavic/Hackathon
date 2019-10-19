@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Hackathon.Models;
+using Hackathon.Models.PlanParameters;
 
 namespace Hackathon.Controllers
 {
@@ -26,7 +27,8 @@ namespace Hackathon.Controllers
 
             /*using (var db = new MotiveOfficeDBContext())
             {
-                db.Users.Add(new DbUser() {PhoneNumber = "111", PasswordHash = "1", Name = "Noname"});
+                db.PhonePlans.Add(new PhonePlan("asdf", 0,0,2,3,5, 8, 9, 0, 1, 0));
+                db.Users.Add()
                 db.SaveChanges();
             }*/
             return View();
@@ -49,6 +51,7 @@ namespace Hackathon.Controllers
             {
                 var user = db.Users.First(u => u.PhoneNumber == phone && u.PasswordHash == passwordHash);
                 HttpContext.Session.Set("name", Encoding.Default.GetBytes(user.Name));
+                HttpContext.Session.Set("id", Encoding.Default.GetBytes(user.Id.ToString()));
                 return View("logged", user);
             }
         }

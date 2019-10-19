@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Hackathon.Models.PlanParameters;
 
 namespace Hackathon.Models
 {
@@ -36,6 +37,9 @@ namespace Hackathon.Models
         public string Email { get; set; }
         public string Region { get; set; }
         //public Тариф ...
+        public int PlanCode { get; set; }
+        [ForeignKey("PlanCode")]
+        public PhonePlan Plan { get; set; }
         public override string ToString()
         {
             return Name + " " +  MiddleName + " " + SecondName;
