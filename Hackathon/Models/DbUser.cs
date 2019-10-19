@@ -8,6 +8,7 @@ namespace Hackathon.Models
     public class DbUser
     {
         public virtual Collection<Transaction> Transactions { get; set; }
+        public virtual Collection<DbService> Services { get; set; }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

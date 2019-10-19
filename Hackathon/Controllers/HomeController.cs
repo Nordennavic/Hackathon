@@ -71,6 +71,17 @@ namespace Hackathon.Controllers
             }
         }
 
+        public IActionResult UserServices()
+        {
+            using (var db = new MotiveOfficeDBContext())
+            {
+                var user = db.Users.Find(getId());
+                db.DbServices.Load();
+                db.Services.Load();
+                return View(Tuple.Create(db.Services.ToArray(), user.Services.ToArray()));
+            }
+        }
+
         [HttpPost]
         public IActionResult Registration(DbUser u)
         {
