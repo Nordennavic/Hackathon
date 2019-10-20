@@ -208,5 +208,10 @@ namespace Hackathon.Controllers
                 return View("BadLogin");
             }
         }
+
+        public IActionResult UpdateServices()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

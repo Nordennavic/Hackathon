@@ -1,4 +1,6 @@
-﻿@model System.Tuple<Hackathon.Models.Service[],Hackathon.Models.DbService[]>
+﻿
+
+@model System.Tuple<Hackathon.Models.Service[], Hackathon.Models.DbService[]>
 
 @{
     ViewBag.Title = "Услуги";
@@ -6,72 +8,103 @@
 }
 
 <h2>Услуги</h2>
+<form onsubmit="return selectChecked()" method="post" asp-controller="Home" asp-action="UpdateServices">
+    <table class="table">
+        <thead>
+            <thread>
+                <tr>
+                    <th>
+                        Название
+                    </th>
+                    <th>
+                        Описание
+                    </th>
+                    <th>
+                        Стоимость подключения
+                    </th>
+                    <th>
+                        Состояние
+                    </th>
+                </tr>
+            </thread>
+        <tbody id="enabled">
+            @if (Model != null)
+            {
+                @foreach (var item in Model.Item2)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.User.Name)
+                            </td>*@
+                        <td>
+                            Требуется название
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service.Cost)
+                        </td>
+                        <td>
+                            <input id="Checkbox2" type="checkbox" checked="checked" onchange="onChecked()" />
+                            <div>
+                                <input type="hidden" name="service" value="@item.Id" />
+                            </div>
+                        </td>
 
-<table class="table">
-    <thead>
-    <thread>
-        <tr>
-            <th>
-                Дата
-            </th>
-            <th>
-                Описание
-            </th>
-            <th>
-                Изменение счёта
-            </th>
-        </tr>
-    </thread>
-    @if (Model != null)
-    {
-        @foreach (var item in Model.Item2)
-        {
-            <tr>
-                @*<td>
-            @Html.DisplayFor(modelItem => item.User.Name)
-        </td>*@
+                    </tr>
+                }
+            }
+        </tbody>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Service.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Service.Cost)
-                </td>
-            </tr>
-        }
-    }
-    </thead>
-</table>
+    </table>
 
-<table class="table">
-    <thead>
-    <thread>
-        <tr>
-            <th>
-                Дата
-            </th>
-            <th>
-                Описание
-            </th>
-            <th>
-                Изменение счёта
-            </th>
-        </tr>
-    </thread>
-    @if (Model != null)
-    {
-        @foreach (var item in Model.Item1)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cost)
-                </td>
-            </tr>
-        }
-    }
-    </thead>
-</table>
+    <table class="table">
+        <thead>
+            <thread>
+                <tr>
+                    <th>
+                        Название
+                    </th>
+                    <th>
+                        Описание
+                    </th>
+                    <th>
+                        Стоимость услуги
+                    </th>
+                    <th>
+                        Состояние
+                    </th>
+                </tr>
+            </thread>
+        <tbody id="disabled">
+
+            @if (Model != null)
+            {
+                @foreach (var item in Model.Item1)
+                {
+                    <tr>
+                        <td>
+                            Требуется название
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cost)
+                        </td>
+                        <td>
+                            <input id="Checkbox2" type="checkbox" onchange="onChecked()" />
+                            <div>
+                                <input type="hidden" name="service" value="@item.Id" />
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <button id="Change" disabled="disabled">Submit</button> @*Прибейте эту кнопку справа*@
+</form>
 
