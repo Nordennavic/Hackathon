@@ -58,3 +58,14 @@ function selectChecked() {
         }
     return true;
 }
+
+function onDropSubmit() {
+
+    const password = document.getElementById("password").value;
+    const passHash = CryptoJS.MD5(password).toString();
+    document.getElementById("pass").value = passHash;
+    const ans = document.getElementById("ans").value;
+    const ansHash = CryptoJS.MD5(ans).toString();
+    document.getElementById("answer").value = ansHash;
+    return true;
+}
