@@ -79,7 +79,7 @@
             </thread>
         <tbody id="disabled">
 
-            @if (Model != null)
+        @if (Model != null)
             {
                 @foreach (var item in Model.Item1)
                 {
@@ -99,12 +99,14 @@
                                 <input type="hidden" name="service" value="@item.Id" />
                             </div>
                         </td>
-
                     </tr>
                 }
             }
         </tbody>
+
     </table>
+
+    
     <button id="Change" disabled="disabled">Submit</button> @*Прибейте эту кнопку справа*@
 </form>
 
