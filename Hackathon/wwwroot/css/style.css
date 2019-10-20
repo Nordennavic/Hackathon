@@ -194,7 +194,7 @@ body {
 
 .main-block {
     width: 24%;
-    height: 130px;
+    height: 8rem;
     background: #fff;
     box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.15);
     border: solid 1px #80828127;
@@ -208,7 +208,7 @@ body {
     font-size: 18px;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;
-    margin: 20px 0 10px 20px;
+    margin: 20px 0 3px 20px;
 }
 
 .main-block-value {
@@ -240,7 +240,8 @@ body {
     margin-top: 20px;
     background: #fff;
     width: 49.1%;
-    min-height: 290px;
+    height: 16rem;
+    min-height: 260px;
     box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.15);
     border: solid 1px #80828127;
 }
@@ -249,13 +250,13 @@ body {
     margin-top: 20px;
     background: #fff;
     width: 49.1%;
-    height: 180px;
+    height: 8rem;
     box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.15);
     border: solid 1px #80828127;
 }
 
 #detail-table {
-    margin: 20px;
+    margin: 20px 20px 5px 20px;
 }
 
 table {
@@ -275,22 +276,92 @@ th {
     font-weight: normal;
     padding: 10px 8px;
     font-weight: bold;
+    font-size: 14px;
+    padding: 5px;
 }
 
 td {
     font-size: 14px;
     color: #000;
+    padding: 5px;
     padding: 9px 8px;
     transition: .3s linear;
+    font-size: 14px;
 }
 
 tr:hover td {
     cursor: default;
     color: #f67d23;
+    font-size: 14px;
 }
 
 #no-transac-warning {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     margin-left: 20px;
+}
+
+#left-blocks {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left-block {
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.first-row {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+}
+
+.second-row {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.main-value {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #f67d23;
+}
+
+/*footer-----------------------------------------*/
+
+#footer {
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin-bottom: 60px;
+    margin-top: 20px;
+    padding-top: 48px;
+    text-align: center;
+    color: #6c757d;
+}
+
+#list-inline {
+    margin-right:0.5rem;
+}
+
+#list-inline-item {
+    display: inline-block;
+}
+
+#footer-text {
+    margin-bottom: 15px;
+    font-size: 18px;
+    transition: ease-in-out 0.5s;
+}
+
+#footer-text:hover {
+    cursor: default;
+    margin-bottom: 15px;
+    font-size: 19px;
+    transition: ease-in-out 0.5s;
 }

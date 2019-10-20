@@ -6,8 +6,6 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
-
 <table class="table">
     <thead>
         <thread>
@@ -19,7 +17,7 @@
                     Описание
                 </th>
                 <th>
-                    Деньги
+                    Изменение счёта
                 </th>
             </tr>
         </thread>
@@ -34,8 +32,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Value)
+                    <td style="color: @(item.Value > 0 ? "Green" : "Black")">
+                        @(item.Value > 0 ? "+"+item.Value.ToString() : item.Value.ToString()) ₽
                     </td>
                 </tr>
             }

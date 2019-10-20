@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -52,11 +53,24 @@ namespace Hackathon.Controllers
         }
         public IActionResult ReplenishmentCosts()
         {
+            if (HttpContext.Session.Get("id") == null) return View(new List<Transaction>());
             using (var db = new MotiveOfficeDBContext())
             {
-                var user = db.Users.Find(int.Parse(HttpContext.Session.GetString("id")));
+                var user = db.Users.Find(getId());
                 db.Transactions.Load();
                 return View(user.Transactions);
+            }
+        }
+
+        public IActionResult UserServices()
+        {
+            if (HttpContext.Session.Get("id") == null) return View(Tuple.Create(new Service[0], new DbService[0]));
+            using (var db = new MotiveOfficeDBContext())
+            {
+                var user = db.Users.Find(getId());
+                db.DbServices.Load();
+                db.Services.Load();
+                return View(Tuple.Create(db.Services.ToArray(), user.Services?.ToArray() ?? new DbService[0]));
             }
         }
 
@@ -88,8 +102,8 @@ namespace Hackathon.Controllers
                     return View("BadLogin");
                 }
                 HttpContext.Session.Set("name", Encoding.Default.GetBytes(user.Name));
-                HttpContext.Session.Set("id", Encoding.Default.GetBytes(user.Id.ToString()));
                 db.Transactions.Load();
+                setId(user.Id);
                 return View("logged", user);
             }
         }
@@ -105,11 +119,85 @@ namespace Hackathon.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        int getId()
+        {
+            var code = HttpContext.Session.Get("id");
+            var bytes = DecryptData(code);
+            return int.Parse(System.Text.Encoding.UTF8.GetString(bytes));
+        }
+
+        void setId(int id)
+        {
+            HttpContext.Session.Set("id", EncryptData(Encoding.Default.GetBytes(id.ToString())));
+        }
+
         public IActionResult Exit()
         {
             HttpContext.Session.Set("name", Encoding.Default.GetBytes(""));
             HttpContext.Session.Set("id", Encoding.Default.GetBytes(""));
             return View("Login");
+        }
+
+        const string ContainerName = "MyContainer";
+        public static byte[] EncryptData(byte[] dataToEncrypt)
+        {
+            byte[] cipherbytes;
+            var cspParams = new CspParameters { KeyContainerName = ContainerName };
+            using (var rsa = new RSACryptoServiceProvider(2048, cspParams))
+            {
+                cipherbytes = rsa.Encrypt(dataToEncrypt, false);
+            }
+            return cipherbytes;
+        }
+        public static byte[] DecryptData(byte[] dataToDecrypt)
+        {
+            byte[] plain;
+            var cspParams = new CspParameters { KeyContainerName = ContainerName };
+            using (var rsa = new RSACryptoServiceProvider(2048, cspParams))
+            {
+                plain = rsa.Decrypt(dataToDecrypt, false);
+            }
+            return plain;
+        }
+
+        public IActionResult DropPassword()
+        {
+            return View();
+        }
+
+        public IActionResult Question(string forgottenPhone)
+        {
+            using (var db = new MotiveOfficeDBContext())
+            {
+                db.Users.Load();          
+                DbUser user;
+                try
+                {
+                    user = db.Users.First(u => u.PhoneNumber == forgottenPhone);
+                }
+                catch
+                {
+                    return View("BadLogin");
+                }
+                return View("QuestionDropPassword", user);
+            }
+        }
+
+        public IActionResult AskQuestion(string answ, string passwordHash, int id)
+        {
+            using (var db = new MotiveOfficeDBContext())
+            {
+                db.Users.Load();
+                var user = db.Users.Find(id);
+                if (user.SecretAnswer == answ)
+                {
+                    user.PasswordHash = passwordHash;
+                    db.SaveChanges();
+                    return View("index");
+                }
+
+                return View("BadLogin");
+            }
         }
     }
 }

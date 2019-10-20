@@ -1,0 +1,77 @@
+﻿@model System.Tuple<Hackathon.Models.Service[],Hackathon.Models.DbService[]>
+
+@{
+    ViewBag.Title = "Услуги";
+    Layout = "_Layout";
+}
+
+<h2>Услуги</h2>
+
+<table class="table">
+    <thead>
+    <thread>
+        <tr>
+            <th>
+                Дата
+            </th>
+            <th>
+                Описание
+            </th>
+            <th>
+                Изменение счёта
+            </th>
+        </tr>
+    </thread>
+    @if (Model != null)
+    {
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.User.Name)
+        </td>*@
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.Cost)
+                </td>
+            </tr>
+        }
+    }
+    </thead>
+</table>
+
+<table class="table">
+    <thead>
+    <thread>
+        <tr>
+            <th>
+                Дата
+            </th>
+            <th>
+                Описание
+            </th>
+            <th>
+                Изменение счёта
+            </th>
+        </tr>
+    </thread>
+    @if (Model != null)
+    {
+        @foreach (var item in Model.Item1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                </td>
+            </tr>
+        }
+    }
+    </thead>
+</table>
+

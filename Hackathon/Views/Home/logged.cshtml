@@ -4,13 +4,13 @@
     ViewData["Title"] = "Личный кабинет - " + Model.Name;
     var message = "";
     var hourNow = DateTime.Now.Hour;
-    if (hourNow >= 0 || hourNow < 6)
+    if (hourNow >= 0 && hourNow < 6)
         message = "Доброй ночи, ";
-    else if (hourNow >= 6 || hourNow < 12)
+    else if (hourNow >= 6 && hourNow < 12)
         message = "Доброе утро, ";
-    else if (hourNow >= 12 || hourNow < 18)
+    else if (hourNow >= 12 && hourNow < 18)
         message = "Добрый день, ";
-    else if (hourNow >= 18 || hourNow < 0)
+    else if (hourNow >= 18 && hourNow < 0)
         message = "Добрый вечер, ";
     message += Model.Name + "!";
 }
@@ -81,7 +81,7 @@
                                         <tr>
                                             <th>@transaction.Data.ToLongDateString()</th>
                                             <td>@transaction.Description</td>
-                                            <td>@transaction.Value</td>
+                                            <td>@transaction.Value ₽</td>
                                         </tr>
                                         counter++;
                                     }
@@ -89,7 +89,7 @@
                             </tbody>
                         </table>
 
-                        <a class="main-block-link">Подробнее</a>
+
                     </div>
                 }
 
@@ -98,12 +98,43 @@
                     <span id="no-transac-warning">Нет транзакций</span>
                 }
 
-
+                <a class="main-block-link">Подробнее</a>
             </div>
 
             <div id="service-block">
                 <div class="main-block-header">
                     Остаток по тарифу
+                </div>
+                <div id="left-blocks">
+                    <div class="left-block">
+                        <div class="first-row">
+                            <span class="main-value">@Model.MinutesLeft</span>
+                            <span>МИН</span>
+                        </div>
+                        <div class="second-row">
+                            <span>на 23 дня</span>
+                        </div>
+                    </div>
+
+                    <div class="left-block">
+                        <div class="first-row">
+                            <span class="main-value">@Model.GbLeft</span>
+                            <span>ГБ</span>
+                        </div>
+                        <div class="second-row">
+                            <span>на 23 дня</span>
+                        </div>
+                    </div>
+
+                    <div class="left-block">
+                        <div class="first-row">
+                            <span class="main-value">@Model.SMSLeft</span>
+                            <span>МИН</span>
+                        </div>
+                        <div class="second-row">
+                            <span>на 23 дня</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
