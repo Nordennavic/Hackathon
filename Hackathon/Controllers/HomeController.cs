@@ -39,7 +39,16 @@ namespace Hackathon.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.Get("id") == null) //return View(Tuple.Create(new Service[0], new DbService[0]));
+                return View("Login");
+            else
+            {
+                using (var db = new MotiveOfficeDBContext())
+                {
+                    db.PhonePlans.Load();
+                    return View("logged", db.Users.Find(getId()));
+                }
+            }//return View("logged", )
         }
 
         public IActionResult Login()
@@ -259,14 +268,14 @@ namespace Hackathon.Controllers
                     }
                     //else user.Services = new System.Collections.ObjectModel.Collection<DbService>(list);
                     db.SaveChanges();
-            }
+                }
                 catch (Exception e)
-            {
+                {
 
-                return View("BadLogin");
-            }
+                    return View("BadLogin");
+                }
 
-            return View("index");
+                return View("index");
             }
         }
 
