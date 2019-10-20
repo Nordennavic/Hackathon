@@ -54,7 +54,7 @@ function selectChecked() {
         if (!(d.item(i).checked) /*== ''*/) {
 
             disabledChs.item(i).innerHTML = '';
-
+            
         }
     return true;
 }

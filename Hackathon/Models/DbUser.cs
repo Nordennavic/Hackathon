@@ -20,8 +20,8 @@ namespace Hackathon.Models
         public DateTime BirthDate { get; set; }
         public string SecretQuestion { get; set; }
         public string SecretAnswer { get; set; }
-        public double Age 
-        { 
+        public double Age
+        {
             get
             {
                 var today = DateTime.Today;
@@ -40,12 +40,16 @@ namespace Hackathon.Models
         public string Region { get; set; }
         //public Тариф ...
         public int PlanCode { get; set; }
+        public DateTime PlanConectionDate { get; set; }
+        public int MinutesLeft { get; set; }
+        public float GbLeft { get; set; }
+        public int SMSLeft { get; set; }
         //public string PlanName { get; set; }
         //[ForeignKey("PlanCode")]
         //public PhonePlan Plan { get; set; }
         public override string ToString()
         {
-            return Name + " " +  MiddleName + " " + SecondName;
+            return Name + " " + MiddleName + " " + SecondName;
         }
     }
 }
