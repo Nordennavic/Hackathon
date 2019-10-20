@@ -46,6 +46,14 @@ body {
     line-height: 75px;
 }
 
+#pre-alfa {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
 .header-username {
     text-decoration: none;
     color: #f67d23;
@@ -95,6 +103,16 @@ body {
 }
 
 /*Login-------------------------*/
+
+#tagline {
+    color: #fafafa;
+    font-size: 55px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: 1px;
+    width: 400px;
+    margin-top: 60px;
+    margin-right: 390px;
+}
 
 #background {
     background-image: url("../background2.png");
