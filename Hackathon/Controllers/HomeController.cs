@@ -73,12 +73,13 @@ namespace Hackathon.Controllers
 
         public IActionResult UserServices()
         {
+            if (HttpContext.Session.Get("id") == null) return View(Tuple.Create(new Service[0], new DbService[0]));
             using (var db = new MotiveOfficeDBContext())
             {
                 var user = db.Users.Find(getId());
                 db.DbServices.Load();
                 db.Services.Load();
-                return View(Tuple.Create(db.Services.ToArray(), user.Services.ToArray()));
+                return View(Tuple.Create(db.Services.ToArray(), user.Services?.ToArray() ?? new DbService[0]));
             }
         }
 
@@ -165,6 +166,42 @@ namespace Hackathon.Controllers
                 plain = rsa.Decrypt(dataToDecrypt, false);
             }
             return plain;
+        }
+
+        public IActionResult UpdateServices(int[] service)
+        {
+            using (var db = new MotiveOfficeDBContext())
+            {
+                db.Users.Load();
+                db.DbServices.Load();
+                var i = 0;
+                DbUser user;
+                //try
+                //{
+                    user = db.Users.Find(getId());
+                    var list = new List<DbService>();
+                    if (user.Services != null)
+                    {
+                        user.Services.Clear();
+                        db.SaveChanges();
+                    }
+                    foreach (var e in service)
+                    {
+                        db.DbServices.Add(new DbService() { UserId = user.Id, Id = ++i, ServiceId = e });
+                        //list.Add(new DbService() {UserId = user.Id, ServiceId = e });
+                        //user.Services.Append(new DbService() {UserId = user.Id, ServiceId = e });
+                    }
+                    //else user.Services = new System.Collections.ObjectModel.Collection<DbService>(list);
+                    db.SaveChanges();
+                //}
+                //catch(Exception e)
+                //{
+                    
+                //    return View("BadLogin");
+                //}
+                
+                return View(user);
+            }
         }
 
     }

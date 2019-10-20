@@ -18,3 +18,43 @@ function onRegistrationSubmit() {
     document.getElementById("registerPassHash").value = passHash;
     return true;
 }
+
+function onChecked() {
+    const enabled = document.getElementById('enabled');
+    const enabledChs = enabled.getElementsByTagName('input');
+    const disabledChs = disabled.getElementsByTagName('input');
+    //document.getElementsByTagName('').
+    //Change.enabled = enabledChs.some(e => !e.checked) || disabledChs.some(e => e.checked);
+    for (let i = 0; i < enabledChs.length; i++)
+        if (!enabledChs.item(i).checked /*== "checked"*/) {
+            Change.disabled = '';
+            return;
+        }
+    for (let i = 0; i < disabledChs.length; i++)
+        if (disabledChs.item(i).checked /*== ''*/) {
+            Change.disabled = '';
+            return;
+        }
+    Change.disabled = 'disabled';
+}
+
+function selectChecked() {
+    const enabled = document.getElementById('enabled');
+    const enabledChs = enabled.getElementsByTagName('div');
+    const disabledChs = disabled.getElementsByTagName('div');
+    const e = enabled.getElementsByTagName('input');
+    const d = disabled.getElementsByTagName('input');
+    //document.getElementsByTagName('').
+    //Change.enabled = enabledChs.some(e => !e.checked) || disabledChs.some(e => e.checked);
+    for (let i = 0; i < enabledChs.length; i++)
+        if (!(e.item(i)) /*== "checked"*/) {
+            enabledChs.item(i).innerHTML = '';
+        }
+    for (let i = 0; i < disabledChs.length; i++)
+        if (!(d.item(i).checked) /*== ''*/) {
+
+            disabledChs.item(i).innerHTML = '';
+            
+        }
+    return true;
+}
