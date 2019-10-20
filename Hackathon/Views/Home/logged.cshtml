@@ -74,17 +74,15 @@
                             </thead>
                             <tbody>
                                 @{
-                                    var counter = 0;
                                     foreach (var transaction in Model.Transactions)
                                     {
-                                        if (counter == 3)
-                                            break;
                                         <tr>
                                             <th>@transaction.Data.ToLongDateString()</th>
                                             <td>@transaction.Description</td>
-                                            <td>@transaction.Value ₽</td>
+                                            <td style="color: @(transaction.Value > 0 ? "Green" : "Black")">
+                                                @(transaction.Value > 0 ? "+" + transaction.Value.ToString() : transaction.Value.ToString()) ₽
+                                            </td>
                                         </tr>
-                                        counter++;
                                     }
                                 }
                             </tbody>
@@ -102,42 +100,52 @@
                 <a class="main-block-link">Подробнее</a>
             </div>
 
-            <div id="service-block">
-                <div class="main-block-header">
-                    Остаток по тарифу
+            <div id="services">
+                <div id="service-block">
+                    <div class="main-block-header">
+                        Остаток по тарифу
+                    </div>
+                    <div id="left-blocks">
+                        <div class="left-block">
+                            <div class="first-row">
+                                <span class="main-value">@Model.MinutesLeft</span>
+                                <span>МИН</span>
+                            </div>
+                            <div class="second-row">
+                                <span>на 23 дня</span>
+                            </div>
+                        </div>
+
+                        <div class="left-block">
+                            <div class="first-row">
+                                <span class="main-value">@Model.GbLeft</span>
+                                <span>ГБ</span>
+                            </div>
+                            <div class="second-row">
+                                <span>на 23 дня</span>
+                            </div>
+                        </div>
+
+                        <div class="left-block">
+                            <div class="first-row">
+                                <span class="main-value">@Model.SMSLeft</span>
+                                <span>МИН</span>
+                            </div>
+                            <div class="second-row">
+                                <span>на 23 дня</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="left-blocks">
-                    <div class="left-block">
-                        <div class="first-row">
-                            <span class="main-value">@Model.MinutesLeft</span>
-                            <span>МИН</span>
-                        </div>
-                        <div class="second-row">
-                            <span>на 23 дня</span>
-                        </div>
+                <div id="service-block">
+                    <div class="main-block-header">
+                        Список услуг
                     </div>
 
-                    <div class="left-block">
-                        <div class="first-row">
-                            <span class="main-value">@Model.GbLeft</span>
-                            <span>ГБ</span>
-                        </div>
-                        <div class="second-row">
-                            <span>на 23 дня</span>
-                        </div>
-                    </div>
-
-                    <div class="left-block">
-                        <div class="first-row">
-                            <span class="main-value">@Model.SMSLeft</span>
-                            <span>МИН</span>
-                        </div>
-                        <div class="second-row">
-                            <span>на 23 дня</span>
-                        </div>
-                    </div>
+                    <a class="main-block-link" asp-controller="Home" asp-action="UserServices" style="margin-top: 15px">Подробнее</a>
                 </div>
             </div>
+
         </div>
 
     </div>

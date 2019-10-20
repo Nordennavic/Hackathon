@@ -243,6 +243,7 @@ namespace Hackathon.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult UpdateServices(int[] service)
         {
             using (var db = new MotiveOfficeDBContext())
