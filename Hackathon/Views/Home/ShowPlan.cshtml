@@ -10,77 +10,78 @@
 <div>
     <h4>PhonePlan</h4>
     <hr />
+
+    <dt class="col-sm-2">
+        Название
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Title)
+    </dd>
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AbonentPay)
+        <dt class="col-sm-2">
+            Абонентская плата
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AbonentPay)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PrimaryPay)
+        <dt class="col-sm-2">
+            Плата за подключеие
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PrimaryPay)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
+        <dt class="col-sm-2">
+            Звонки на Мотив Р/Мин
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OnMotiv)
-        </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OnMotiv)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OnMotivFix)
+        <dt class="col-sm-2">
+            Пакет минут
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OnMotivFix)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OnOtherOp)
+        <dt class="col-sm-2">
+            Звонки на других опреторов
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OnOtherOp)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OnGTC)
+        <dt class="col-sm-2">
+            Звонки подключения региона подключения ГТС
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OnGTC)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OnRF)
+        <dt class="col-sm-2">
+            Звонки по России
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OnRF)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MobileInternet)
+        <dt class="col-sm-2">
+            Мобильный интернет
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MobileInternet)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SmsOnRF)
+        <dt class="col-sm-2">
+            Цена СМС
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SmsOnRF)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SmsOnRFFix)
+        <dt class="col-sm-2">
+            Количество СМС в пакете
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SmsOnRFFix)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MmsOnRF)
+        <dt class="col-sm-2">
+            Цена ММС
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MmsOnRF)
         </dd>
     </dl>
