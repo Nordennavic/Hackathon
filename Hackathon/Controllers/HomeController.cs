@@ -89,6 +89,7 @@ namespace Hackathon.Controllers
                 }
                 HttpContext.Session.Set("name", Encoding.Default.GetBytes(user.Name));
                 HttpContext.Session.Set("id", Encoding.Default.GetBytes(user.Id.ToString()));
+                db.Transactions.Load();
                 return View("logged", user);
             }
         }

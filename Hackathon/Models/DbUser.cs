@@ -36,6 +36,7 @@ namespace Hackathon.Models
         public string Region { get; set; }
         //public Тариф ...
         public int PlanCode { get; set; }
+        public float Balance { get; set; }
         //public string PlanName { get; set; }
         //[ForeignKey("PlanCode")]
         //public PhonePlan Plan { get; set; }

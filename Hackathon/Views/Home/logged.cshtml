@@ -1,89 +1,112 @@
 ﻿@model Hackathon.Models.DbUser
 
 @{
-    ViewData["Title"] = "logged";
+    ViewData["Title"] = "Личный кабинет - " + Model.Name;
+    var message = "";
+    var hourNow = DateTime.Now.Hour;
+    if (hourNow >= 0 || hourNow < 6)
+        message = "Доброй ночи, ";
+    else if (hourNow >= 6 || hourNow < 12)
+        message = "Доброе утро, ";
+    else if (hourNow >= 12 || hourNow < 18)
+        message = "Добрый день, ";
+    else if (hourNow >= 18 || hourNow < 0)
+        message = "Добрый вечер, ";
+    message += Model.Name + "!";
 }
 
-<h1>logged</h1>
+    <div id="main-container">
+        <div id="greeting-message">@message</div>
+        <div class="main-blocks">
+            <div class="main-block">
+                <div class="main-block-header">
+                    Номер телефона
+                </div>
+                <div class="main-block-value">
+                    @Model.PhoneNumber
+                </div>
+            </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MiddleName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecondName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PasswordHash)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExtraPhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Region)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PlanCode)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@*@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MiddleName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PasswordHash)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExtraPhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Region)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlanCode)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}*@
-    </tbody>
-</table>
+            <div class="main-block">
+                <div class="main-block-header">
+                    Тариф
+                </div>
+                <div class="main-block-value">
+                    тут тариф
+                </div>
+                <a class="main-block-link">Сменить тариф</a>
+            </div>
+
+            <div class="main-block">
+                <div class="main-block-header">
+                    Остаток на сегодня
+                </div>
+                <div class="main-block-value">
+                    @Model.Balance Руб.
+                </div>
+                <a class="main-block-link">Пополнить баланс</a>
+            </div>
+
+            <div class="main-block special">
+                <div class="main-block-header">
+                    Меняй минуты на ГБ!
+                </div>
+                <a class="main-block-link special-link">Подробнее</a>
+            </div>
+        </div>
+
+        <div class="main-blocks">
+            <div id="detail-block">
+                <div class="main-block-header">
+                    Детализация и расходы
+                </div>
+                @if (Model.Transactions != null)
+                {
+                    <div id="detail-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Дата</th>
+                                    <th>Услуга</th>
+                                    <th>Стоимость</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var counter = 0;
+                                    foreach (var transaction in Model.Transactions)
+                                    {
+                                        if (counter == 3)
+                                            break;
+                                        <tr>
+                                            <th>@transaction.Data.ToLongDateString()</th>
+                                            <td>@transaction.Description</td>
+                                            <td>@transaction.Value</td>
+                                        </tr>
+                                        counter++;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                        <a class="main-block-link">Подробнее</a>
+                    </div>
+                }
+
+                @if (Model.Transactions == null)
+                {
+                    <span id="no-transac-warning">Нет транзакций</span>
+                }
+
+
+            </div>
+
+            <div id="service-block">
+                <div class="main-block-header">
+                    Остаток по тарифу
+                </div>
+            </div>
+        </div>
+
+    </div>
+      

@@ -2,7 +2,7 @@
 @{
     var login = Context.Session.GetString("name");
     var address = String.IsNullOrEmpty(login) ? "/Home/Login" : "";
-    var label = String.IsNullOrEmpty(login) ? "Login" : login;
+    var label = String.IsNullOrEmpty(login) ? "Войти" : login;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -10,14 +10,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Hackathon</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
+        <div id="header-container">
+            <img id="header-img" src="~/logo.png" />
+            <a id="header-text" asp-area="" asp-controller="Home" asp-action="Index">Личный кабинет</a>
+
+            <div id="button-space">
+                @if (label == "Войти")
+                {
+                    <a class="buttons" href="@address" id="name">@label</a>
+                }
+                @if (!String.IsNullOrEmpty(login))
+                {
+                    <a class="buttons" asp-controller="Home" asp-action="Exit">Выход</a>
+                }
+            </div>
+        </div>
+    </header>
+
+    @*<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Hackathon</a>
@@ -48,18 +67,16 @@
                 }
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    </header>*@
+    <main>
+        @RenderBody()
+    </main>
 
-    <footer class="border-top footer text-muted">
+    @*<footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2019 - Hackathon - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
