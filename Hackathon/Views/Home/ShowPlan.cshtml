@@ -1,13 +1,93 @@
 ﻿@model Hackathon.Models.PlanParameters.PhonePlan
 
 @{
-    ViewData["Title"] = "ShowPlan";
+    ViewData["Title"] = "Описание Вашего тарифа";
     Layout = "_Layout";
 }
 
-<h1>ShowPlan</h1>
+    <div id="greeting-message">Тариф "<span style="color: #f67d23">@Html.DisplayFor(model => model.Title)</span>"</div>
 
-<div>
+
+    <div id="plan-info">
+        <table id="plan-table">
+            <thead id="plan-thead">
+                <tr class="plan-tr">
+                    <th>Абонентская плата</th>
+                    <td>
+                        @Html.DisplayFor(model => model.AbonentPay)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Плата за подключеие</th>
+                    <td>
+                        @Html.DisplayFor(model => model.PrimaryPay)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Название</th>
+                    <td>
+                        @Html.DisplayFor(model => model.Title)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Звонки на Мотив Р/Мин</th>
+                    <td>
+                        @Html.DisplayFor(model => model.OnMotiv)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Пакет минут</th>
+                    <td>
+                        @Html.DisplayFor(model => model.OnMotivFix)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Звонки на других опреторов</th>
+                    <td>
+                        @Html.DisplayFor(model => model.OnOtherOp)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Звонки подключения региона подключения ГТС</th>
+                    <td>
+                        @Html.DisplayFor(model => model.OnGTC)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Звонки по России</th>
+                    <td>
+                        @Html.DisplayFor(model => model.OnRF)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Мобильный интернет</th>
+                    <td>
+                        @Html.DisplayFor(model => model.MobileInternet)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Цена СМС</th>
+                    <td>
+                        @Html.DisplayFor(model => model.SmsOnRF)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Количество СМС в пакете</th>
+                    <td>
+                        @Html.DisplayFor(model => model.SmsOnRFFix)
+                    </td>
+                </tr>
+                <tr class="plan-tr">
+                    <th>Цена ММС</th>
+                    <td>
+                        @Html.DisplayFor(model => model.MmsOnRF)
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+@*<div>
     <h4>PhonePlan</h4>
     <hr />
 
@@ -88,4 +168,4 @@
 </div>
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@

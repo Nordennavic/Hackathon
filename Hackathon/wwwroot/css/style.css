@@ -365,3 +365,61 @@ tr:hover td {
     font-size: 19px;
     transition: ease-in-out 0.5s;
 }
+
+/*ShowPlan---------------------------------------*/
+
+#plan-info {
+    width: 80%;
+    background:#fff;
+    margin: 50px auto;
+    box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+}
+
+#plan-table {
+    margin: auto;
+    width:80%;
+}
+
+#plan-thead {
+    border-bottom: none;
+}
+
+.plan-tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/*ListPlan-----------------------------------*/
+
+#plan-list {
+    width: 90%;
+    background: #fff;
+    box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    margin: 50px auto;
+}
+
+.plan-tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.planlist-tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#link-button {
+    padding-top: 10px;
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 16px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin: 0 0 15px 20px;
+    color: #6abee6;
+}
+
+#link-button:hover {
+    cursor: pointer;
+    color: #4f92b1;
+}

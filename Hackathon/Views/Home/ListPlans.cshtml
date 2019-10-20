@@ -1,107 +1,78 @@
 ﻿@model IEnumerable<Hackathon.Models.PlanParameters.PhonePlan>
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Список доступных тарифов";
     Layout = "_Layout";
 }
 
-<h1>View</h1>
+    <div id="greeting-message">Список доступных <span style="color: #f67d23">тарифов</span></div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Абонентская плата
-            </th>
-            <th>
-                Плата за подключеие
-            </th>
-            <th>
-                Название
-            </th>
-            <th>
-                Звонки на Мотив Р/Мин
-            </th>
-            <th>
-                Пакет минут
-            </th>
-            <th>
-                Звонки на других опреторов
-            </th>
-            <th>
-                Звонки подключения региона подключения ГТС
-            </th>
-            <th>
-                Звонки по России
-            </th>
-            <th>
-                Мобильный интернет
-            </th>
-            <th>
-                Цена СМС
-            </th>
-            <th>
-
-                Количество СМС в пакете
-            </th>
-            <th>
-                Цена ММС
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AbonentPay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrimaryPay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OnMotiv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OnMotivFix)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OnOtherOp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OnGTC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OnRF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MobileInternet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SmsOnRF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SmsOnRFFix)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MmsOnRF)
-            </td>
-            <td>
-                <form asp-controller="Home" asp-action="ChangeTarif">
-                    <input type="hidden" name="id" value="@item.Id"/>
-                    <button class="btn btn-block">Выбрать</button>
-                </form>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div id="plan-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Абонентская плата</th>
+                    <th>Плата за подключеие</th>
+                    <th>Название</th>
+                    <th>Звонки на Мотив Р/Мин</th>
+                    <th>Пакет минут</th>
+                    <th>Звонки на других опреторов</th>
+                    <th>Звонки подключения региона подключения ГТС</th>
+                    <th>Звонки по России</th>
+                    <th>Мобильный интернет</th>
+                    <th>Цена СМС</th>
+                    <th>Количество СМС в пакете</th>
+                    <th>Цена ММС</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="planlist-tr">
+                        <td>
+                            @item.AbonentPay
+                        </td>
+                        <td>
+                            @item.PrimaryPay
+                        </td>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            @item.OnMotiv
+                        </td>
+                        <td>
+                            @item.OnMotivFix
+                        </td>
+                        <td>
+                            @item.OnOtherOp
+                        </td>
+                        <td>
+                            @item.OnGTC
+                        </td>
+                        <td>
+                            @item.OnRF
+                        </td>
+                        <td>
+                            @item.MobileInternet
+                        </td>
+                        <td>
+                            @item.SmsOnRF
+                        </td>
+                        <td>
+                            @item.SmsOnRFFix
+                        </td>
+                        <td>
+                            @item.MmsOnRF
+                        </td>
+                        <td>
+                            <form asp-controller="Home" asp-action="ChangeTarif">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button id="link-button" class="btn btn-block">Выбрать</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
