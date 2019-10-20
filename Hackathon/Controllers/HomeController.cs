@@ -199,5 +199,42 @@ namespace Hackathon.Controllers
                 return View("BadLogin");
             }
         }
+
+        public IActionResult UpdateServices(int[] service)
+        {
+            using (var db = new MotiveOfficeDBContext())
+            {
+                db.Users.Load();
+                db.DbServices.Load();
+                var i = 0;
+                DbUser user;
+                try
+                {
+                    user = db.Users.Find(getId());
+                    var list = new List<DbService>();
+                    if (user.Services != null)
+                    {
+                        user.Services.Clear();
+                        db.SaveChanges();
+                    }
+                    foreach (var e in service)
+                    {
+                        db.DbServices.Add(new DbService() { UserId = user.Id, Id = ++i, ServiceId = e });
+                        //list.Add(new DbService() {UserId = user.Id, ServiceId = e });
+                        //user.Services.Append(new DbService() {UserId = user.Id, ServiceId = e });
+                    }
+                    //else user.Services = new System.Collections.ObjectModel.Collection<DbService>(list);
+                    db.SaveChanges();
+            }
+                catch (Exception e)
+            {
+
+                return View("BadLogin");
+            }
+
+            return View("index");
+            }
+        }
+
     }
 }

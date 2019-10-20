@@ -49,7 +49,7 @@ namespace Hackathon.Models
         //public PhonePlan Plan { get; set; }
         public override string ToString()
         {
-            return Name + " " +  MiddleName + " " + SecondName;
+            return Name + " " + MiddleName + " " + SecondName;
         }
     }
 }
