@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Hackathon.Models.PlanParameters;
 
 namespace Hackathon.Models
 {
@@ -40,6 +41,8 @@ namespace Hackathon.Models
         public string Region { get; set; }
         //public Тариф ...
         public int PlanCode { get; set; }
+        [ForeignKey("PlanCode")]
+        public PhonePlan Plan { get; set; }
         public DateTime PlanConectionDate { get; set; }
         public int MinutesLeft { get; set; }
         public float GbLeft { get; set; }

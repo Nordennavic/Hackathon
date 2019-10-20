@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Hackathon.Models.PlanParameters.PhonePlan>
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "_Layout";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AbonentPay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimaryPay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OnMotiv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OnMotivFix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OnOtherOp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OnGTC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OnRF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileInternet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SmsOnRF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SmsOnRFFix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MmsOnRF)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AbonentPay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryPay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnMotiv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnMotivFix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnOtherOp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnGTC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnRF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileInternet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SmsOnRF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SmsOnRFFix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MmsOnRF)
+            </td>
+            <td>
+                <form asp-controller="Home" asp-action="ChangeTarif">
+                    <input type="hidden" name="id" value="@item.Id"/>
+                    <button class="btn btn-block">Выбрать</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

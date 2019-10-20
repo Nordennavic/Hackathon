@@ -1,0 +1,90 @@
+﻿@model Hackathon.Models.PlanParameters.PhonePlan
+
+@{
+    ViewData["Title"] = "ShowPlan";
+    Layout = "_Layout";
+}
+
+<h1>ShowPlan</h1>
+
+<div>
+    <h4>PhonePlan</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AbonentPay)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AbonentPay)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrimaryPay)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrimaryPay)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OnMotiv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OnMotiv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OnMotivFix)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OnMotivFix)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OnOtherOp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OnOtherOp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OnGTC)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OnGTC)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OnRF)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OnRF)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MobileInternet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MobileInternet)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SmsOnRF)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SmsOnRF)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SmsOnRFFix)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SmsOnRFFix)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MmsOnRF)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MmsOnRF)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

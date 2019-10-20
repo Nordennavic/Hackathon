@@ -92,6 +92,7 @@ namespace Hackathon.Controllers
             using (var db = new MotiveOfficeDBContext())
             { 
                 db.Users.Load();
+                db.PhonePlans.Load();
                 DbUser user;
                 try
                 {
@@ -131,6 +132,39 @@ namespace Hackathon.Controllers
             HttpContext.Session.Set("id", EncryptData(Encoding.Default.GetBytes(id.ToString())));
         }
 
+        public IActionResult ShowPlan()
+        {
+            using(var db = new MotiveOfficeDBContext())
+            {
+                db.Users.Load();
+                db.PhonePlans.Load();
+                var user = db.Users.Find(getId());
+                return View(user.Plan);
+            }
+        }
+
+        public IActionResult ListPlans()
+        {
+            using (var db = new MotiveOfficeDBContext())
+            {
+                db.PhonePlans.Load();
+                return View(db.PhonePlans.ToArray());
+            }
+        }
+
+        public IActionResult ChangeTarif(int id)
+        {
+            using(var db = new MotiveOfficeDBContext())
+            {
+                db.Users.Load();
+                db.PhonePlans.Load();
+                var user = db.Users.Find(getId());
+                user.PlanCode = id;
+                user.Plan = db.PhonePlans.Find(id);
+                db.SaveChanges();
+                return View("logged", user);
+            }
+        }
         public IActionResult Exit()
         {
             HttpContext.Session.Set("name", Encoding.Default.GetBytes(""));
