@@ -47,7 +47,7 @@ function selectChecked() {
     //document.getElementsByTagName('').
     //Change.enabled = enabledChs.some(e => !e.checked) || disabledChs.some(e => e.checked);
     for (let i = 0; i < enabledChs.length; i++)
-        if (!(e.item(i)) /*== "checked"*/) {
+        if (!(e.item(i).checked) /*== "checked"*/) {
             enabledChs.item(i).innerHTML = '';
         }
     for (let i = 0; i < disabledChs.length; i++)

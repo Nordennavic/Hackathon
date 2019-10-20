@@ -176,8 +176,8 @@ namespace Hackathon.Controllers
                 db.DbServices.Load();
                 var i = 0;
                 DbUser user;
-                //try
-                //{
+                try
+                {
                     user = db.Users.Find(getId());
                     var list = new List<DbService>();
                     if (user.Services != null)
@@ -193,14 +193,14 @@ namespace Hackathon.Controllers
                     }
                     //else user.Services = new System.Collections.ObjectModel.Collection<DbService>(list);
                     db.SaveChanges();
-                //}
-                //catch(Exception e)
-                //{
-                    
-                //    return View("BadLogin");
-                //}
-                
-                return View(user);
+            }
+                catch (Exception e)
+            {
+
+                return View("BadLogin");
+            }
+
+            return View("index");
             }
         }
 
